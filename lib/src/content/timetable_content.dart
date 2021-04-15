@@ -60,7 +60,7 @@ class TimetableContent<E extends Event> extends StatelessWidget {
               decoration: BoxDecoration(
                       color: this.theme?.hourBackgroundColor,
                       border: Border(
-                          right: BorderSide(color: UI2Colors.line, width: 1))),
+                          right: BorderSide(color: Color(0xFFe2e2e2), width: 1))),
           ),
           Expanded(
             child: MultiDateContent<E>(
