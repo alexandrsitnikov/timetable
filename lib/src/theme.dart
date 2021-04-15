@@ -32,6 +32,7 @@ class TimetableThemeData {
     this.enablePartDayEventStacking,
     this.partDayEventMinimumDeltaForStacking,
     this.partDayStackedEventSpacing,
+    this.hourBackgroundColor
   })  : assert(allDayEventHeight == null || allDayEventHeight > 0),
         assert(minimumHourHeight == null || minimumHourHeight > 0),
         assert(maximumHourHeight == null || maximumHourHeight > 0),
@@ -186,6 +187,8 @@ class TimetableThemeData {
 
   /// Horizontal space between two parallel events stacked on top of each other.
   final double? partDayStackedEventSpacing;
+
+  final Color? hourBackgroundColor;
 
   @override
   int get hashCode {

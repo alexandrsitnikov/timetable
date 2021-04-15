@@ -16,11 +16,15 @@ class TimetableContent<E extends Event> extends StatelessWidget {
     required this.controller,
     required this.eventBuilder,
     this.onEventBackgroundTap,
+    this.theme,
+    this.dateHoursWidgetBuilder,
   }) : super(key: key);
 
   final TimetableController<E> controller;
   final EventBuilder<E> eventBuilder;
   final OnEventBackgroundTapCallback? onEventBackgroundTap;
+  final TimetableThemeData? theme;
+  final WidgetBuilder? dateHoursWidgetBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,11 @@ class TimetableContent<E extends Event> extends StatelessWidget {
           (timetableTheme?.maximumHourHeight ?? 64) * TimeConstants.hoursPerDay,
       child: Row(
         children: <Widget>[
-          Container(
+          dateHoursWidgetBuilder != null
+              ? Container(
+                  width: hourColumnWidth,
+                  child: dateHoursWidgetBuilder!(context))
+              : Container(
             width: hourColumnWidth,
             padding: EdgeInsets.only(right: 12),
             child: CustomPaint(
@@ -49,6 +57,10 @@ class TimetableContent<E extends Event> extends StatelessWidget {
               ),
               size: Size.infinite,
             ),
+              decoration: BoxDecoration(
+                      color: this.theme?.hourBackgroundColor,
+                      border: Border(
+                          right: BorderSide(color: UI2Colors.line, width: 1))),
           ),
           Expanded(
             child: MultiDateContent<E>(

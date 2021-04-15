@@ -44,10 +44,14 @@ class Timetable<E extends Event> extends StatelessWidget {
     this.theme,
     this.dateHeaderBuilder,
     this.leadingHeaderBuilder,
+      this.afterHeaderBuilder,
+      this.dateHoursWidgetBuilder,
   }) : super(key: key);
 
   final TimetableController<E> controller;
   final EventBuilder<E> eventBuilder;
+
+  final WidgetBuilder? dateHoursWidgetBuilder;
 
   /// Optional [Widget] builder function for all-day event shown in the header.
   ///
@@ -71,6 +75,9 @@ class Timetable<E extends Event> extends StatelessWidget {
   /// day of month will be shown.
   final HeaderWidgetBuilder? dateHeaderBuilder;
 
+  // ALEXANDR SITNIKOV
+  final WidgetBuilder? afterHeaderBuilder;
+
   @override
   Widget build(BuildContext context) {
     Widget child = Column(
@@ -83,11 +90,14 @@ class Timetable<E extends Event> extends StatelessWidget {
           allDayEventBuilder:
               allDayEventBuilder ?? (_, event, __) => eventBuilder(event),
         ),
+        if (afterHeaderBuilder != null) afterHeaderBuilder!(context),
         Expanded(
           child: TimetableContent<E>(
             controller: controller,
             eventBuilder: eventBuilder,
+            dateHoursWidgetBuilder: dateHoursWidgetBuilder,
             onEventBackgroundTap: onEventBackgroundTap,
+            theme: theme
           ),
         ),
       ],
