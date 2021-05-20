@@ -106,12 +106,12 @@ class _VerticalZoomState extends State<VerticalZoom> {
       builder: (context, constraints) {
         final height = constraints.maxHeight;
 
-        _contentHeight = _coerceContentHeight(
+        _contentHeight ??= _coerceContentHeight(
           widget.initialZoom.getContentHeight(height),
           height,
           timetableTheme,
         );
-        _scrollController = ScrollController(
+        _scrollController ??= ScrollController(
           initialScrollOffset:
               widget.initialZoom.getOffset(height, _contentHeight),
         );
