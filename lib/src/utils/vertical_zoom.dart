@@ -79,13 +79,13 @@ class VerticalZoom extends StatefulWidget {
 }
 
 class _VerticalZoomState extends State<VerticalZoom> {
-  late ScrollController _scrollController;
+  ScrollController? _scrollController;
 
   // We store height i/o zoom factor so our child stays constant when we change
   // height.
-  late double _contentHeight;
-  late double _contentHeightUpdateReference;
-  late double _lastFocus;
+  double? _contentHeight;
+  double? _contentHeightUpdateReference;
+  double? _lastFocus;
 
   @override
   void initState() {
