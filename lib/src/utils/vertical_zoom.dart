@@ -147,14 +147,14 @@ class _VerticalZoomState extends State<VerticalZoom> {
   ) {
     setState(() {
       _contentHeight = _coerceContentHeight(
-        details.verticalScale * (_contentHeightUpdateReference!,
+        details.verticalScale * _contentHeightUpdateReference!,
         height,
         theme,
       );
 
       final scrollOffset =
-          _lastFocus * _contentHeight! - details.localFocalPoint.dy;
-      _scrollController.jumpTo(
+          _lastFocus! * _contentHeight! - details.localFocalPoint.dy;
+      _scrollController?.jumpTo(
           scrollOffset.coerceIn(0, (_contentHeight! - height).coerceAtLeast(0)));
 
       _lastFocus = _getFocus(height, details.localFocalPoint);
@@ -175,5 +175,5 @@ class _VerticalZoomState extends State<VerticalZoom> {
   }
 
   double _getFocus(double height, Offset focalPoint) =>
-      (_scrollController.offset + focalPoint.dy) / _contentHeight!;
+      (_scrollController!.offset + focalPoint.dy) / _contentHeight!;
 }

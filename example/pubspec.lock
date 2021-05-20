@@ -42,12 +42,12 @@ packages:
     source: sdk
     version: "0.0.0"
   meta:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0-nullsafety.3"
+    version: "1.3.0"
   path:
     dependency: transitive
     description:
@@ -98,9 +98,11 @@ packages:
   time_machine:
     dependency: "direct main"
     description:
-      name: time_machine
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: dd8190e9f98e2f1093509839dd966f5992775ded
+      resolved-ref: dd8190e9f98e2f1093509839dd966f5992775ded
+      url: "https://github.com/alexandrsitnikov/time_machine"
+    source: git
     version: "0.9.16"
   timetable:
     dependency: "direct main"

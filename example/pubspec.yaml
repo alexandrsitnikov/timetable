@@ -12,7 +12,10 @@ dependencies:
 
   timetable:
     path: ../
-  time_machine: ^0.9.16
+  time_machine:
+    git:
+      url: https://github.com/alexandrsitnikov/time_machine
+      ref: dd8190e9f98e2f1093509839dd966f5992775ded
 
 flutter:
   uses-material-design: true
