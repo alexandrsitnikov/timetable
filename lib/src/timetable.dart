@@ -44,8 +44,9 @@ class Timetable<E extends Event> extends StatelessWidget {
     this.theme,
     this.dateHeaderBuilder,
     this.leadingHeaderBuilder,
-      this.afterHeaderBuilder,
-      this.dateHoursWidgetBuilder,
+    this.afterHeaderBuilder,
+    this.dateHoursWidgetBuilder,
+    this.backgroundPainter,
   }) : super(key: key);
 
   final TimetableController<E> controller;
@@ -78,6 +79,8 @@ class Timetable<E extends Event> extends StatelessWidget {
   // ALEXANDR SITNIKOV
   final WidgetBuilder? afterHeaderBuilder;
 
+  final CustomPainter? backgroundPainter;
+
   @override
   Widget build(BuildContext context) {
     Widget child = Column(
@@ -93,12 +96,12 @@ class Timetable<E extends Event> extends StatelessWidget {
         if (afterHeaderBuilder != null) afterHeaderBuilder!(context),
         Expanded(
           child: TimetableContent<E>(
-            controller: controller,
-            eventBuilder: eventBuilder,
-            dateHoursWidgetBuilder: dateHoursWidgetBuilder,
-            onEventBackgroundTap: onEventBackgroundTap,
-            theme: theme
-          ),
+              controller: controller,
+              eventBuilder: eventBuilder,
+              dateHoursWidgetBuilder: dateHoursWidgetBuilder,
+              onEventBackgroundTap: onEventBackgroundTap,
+              backgroundPainter: backgroundPainter,
+              theme: theme),
         ),
       ],
     );
