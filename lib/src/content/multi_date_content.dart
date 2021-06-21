@@ -18,11 +18,13 @@ class MultiDateContent<E extends Event> extends StatefulWidget {
     required this.controller,
     required this.eventBuilder,
     this.onEventBackgroundTap,
+    this.backgroundPainter,
   }) : super(key: key);
 
   final TimetableController<E> controller;
   final EventBuilder<E> eventBuilder;
   final OnEventBackgroundTapCallback? onEventBackgroundTap;
+  final CustomPainter? backgroundPainter;
 
   @override
   _MultiDateContentState<E> createState() => _MultiDateContentState<E>();
@@ -44,7 +46,7 @@ class _MultiDateContentState<E extends Event>
     final theme = context.theme;
     final timetableTheme = context.timetableTheme;
     return CustomPaint(
-      painter: MultiDateBackgroundPainter(
+      painter: widget.backgroundPainter ?? MultiDateBackgroundPainter(
         controller: widget.controller,
         dividerColor: timetableTheme?.dividerColor ?? theme.dividerColor,
       ),
