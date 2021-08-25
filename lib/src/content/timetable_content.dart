@@ -43,10 +43,10 @@ class TimetableContent<E extends Event> extends StatelessWidget {
         children: <Widget>[
           dateHoursWidgetBuilder != null
               ? Container(
-                  width: hourColumnWidth,
+                  width: timetableTheme?.hourColumnWidth ?? hourColumnWidth,
                   child: dateHoursWidgetBuilder!(context))
               : Container(
-                  width: hourColumnWidth,
+                  width: timetableTheme?.hourColumnWidth ?? hourColumnWidth,
                   padding: EdgeInsets.only(right: 12),
                   child: CustomPaint(
                     painter: DateHoursPainter(
