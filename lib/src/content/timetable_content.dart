@@ -19,6 +19,7 @@ class TimetableContent<E extends Event> extends StatelessWidget {
     this.theme,
     this.dateHoursWidgetBuilder,
     this.backgroundPainter,
+    this.verticalScrollController
   }) : super(key: key);
 
   final TimetableController<E> controller;
@@ -27,6 +28,7 @@ class TimetableContent<E extends Event> extends StatelessWidget {
   final TimetableThemeData? theme;
   final WidgetBuilder? dateHoursWidgetBuilder;
   final CustomPainter? backgroundPainter;
+  final ScrollController? verticalScrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class TimetableContent<E extends Event> extends StatelessWidget {
 
     return VerticalZoom(
       initialZoom: controller.initialTimeRange.asInitialZoom(),
+      scrollController: verticalScrollController,
       minChildHeight:
           (timetableTheme?.minimumHourHeight ?? 16) * TimeConstants.hoursPerDay,
       maxChildHeight:

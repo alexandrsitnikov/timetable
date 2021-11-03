@@ -47,6 +47,7 @@ class Timetable<E extends Event> extends StatelessWidget {
     this.afterHeaderBuilder,
     this.dateHoursWidgetBuilder,
     this.backgroundPainter,
+    this.verticalScrollController
   }) : super(key: key);
 
   final TimetableController<E> controller;
@@ -78,6 +79,7 @@ class Timetable<E extends Event> extends StatelessWidget {
 
   // ALEXANDR SITNIKOV
   final WidgetBuilder? afterHeaderBuilder;
+  final ScrollController? verticalScrollController;
 
   final CustomPainter? backgroundPainter;
 
@@ -101,7 +103,8 @@ class Timetable<E extends Event> extends StatelessWidget {
               dateHoursWidgetBuilder: dateHoursWidgetBuilder,
               onEventBackgroundTap: onEventBackgroundTap,
               backgroundPainter: backgroundPainter,
-              theme: theme),
+              theme: theme,
+              verticalScrollController: verticalScrollController),
         ),
       ],
     );

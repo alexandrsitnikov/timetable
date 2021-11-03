@@ -63,6 +63,7 @@ class VerticalZoom extends StatefulWidget {
     required this.child,
     this.minChildHeight = 1,
     this.maxChildHeight = double.infinity,
+    this.scrollController
   })  : assert(minChildHeight > 0),
         assert(maxChildHeight > 0),
         assert(minChildHeight <= maxChildHeight),
@@ -73,6 +74,7 @@ class VerticalZoom extends StatefulWidget {
   final Widget child;
   final double minChildHeight;
   final double maxChildHeight;
+  final ScrollController? scrollController;
 
   @override
   _VerticalZoomState createState() => _VerticalZoomState();
@@ -90,6 +92,7 @@ class _VerticalZoomState extends State<VerticalZoom> {
   @override
   void initState() {
     super.initState();
+    _scrollController = widget.scrollController;
   }
 
   @override
